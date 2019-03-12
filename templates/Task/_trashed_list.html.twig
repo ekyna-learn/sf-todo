@@ -1,0 +1,23 @@
+{# Pour chaque todo #}
+<div class="row todo">
+    <div class="col-sm-11">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <em>{# Date de création #}</em>
+                {# Contenu du todo #}
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-1">
+        <p>
+            {# Bouton de restauration #}
+            <a href="#" class="btn btn-xs btn-primary">
+                <span class="glyphicon glyphicon-repeat"></span>
+            </a>
+            {# Bouton de suppression #}
+            <a href="#" onclick="return confirm('Confirmer la suppression ?')" class="btn btn-xs btn-danger">
+                <span class="glyphicon glyphicon-remove"></span>
+            </a>
+        </p>
+    </div>
+</div>
