@@ -1,24 +1,35 @@
 {% extends "base.html.twig" %}
 
+
 {% block body %}
     <div class="jumbotron">
         <div class="container">
-            <h1>ToDoList</h1>
 
-            {# Début formulaire (ajout ou modification) #}
-                {# Champ du formulaire #}
+            <h1>TodoList</h1>
 
-                <button type="submit" class="btn btn-success">
-                    <span class="glyphicon glyphicon-plus"></span> Ajouter
-                </button>
-
-            {# Fin formulaire #}
+            {{ form_start(form) }}
+            {{ form_row(form.content) }}
+            <p>
+                {% if mode == 'trashed' %}
+                    <a href="{{ path('task_index') }}"
+                       class="pull-right btn btn-default">Actifs</a>
+                {% else %}
+                    <a href="{{ path('task_trashed') }}"
+                       class="pull-right btn btn-default">Archivés</a>
+                {% endif %}
+                {{ form_widget(form.submit) }}
+            </p>
+            {{ form_end(form) }}
 
         </div>
     </div>
+
     <div class="container">
-
-        {# Liste par défaut des tâches #}
-
+        {% if mode == 'trashed' %}
+            {% include "Task/_trashed_list.html.twig" %}
+        {% else %}
+            {% include "Task/_default_list.html.twig" %}
+        {% endif %}
     </div>
+
 {% endblock %}
